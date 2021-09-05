@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {{ auction }}
+    {% if today < auction.end_date %}
+    <a href="{% url 'add_bid' auction.id %}">ADD BID </a>
+
+    {% for element in bidders %}
+        <ul> <h2>{{ element.bidder }}</h2>
+            {{ element.price }}</li>
+        </ul>
+    {% endfor %}
+    {% else %}
+    WINNING BID PRICE = {{ auction.price }}
+    {% endif %}
+
+{% endblock %}

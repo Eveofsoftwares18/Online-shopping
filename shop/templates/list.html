@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for object in object_list %}
+        {% if object.end_date <= object.today and object.category == 1  %}
+            <ul>
+            <ul>Auction name: {{ object.name }}</ul>
+            <ul>Price: {{ object.price }}</ul>
+            AUKCJA ZOSTAŁA ZAKOŃCZONA
+        {% else %}
+            {% if object.sold == False and object.category == 1 %}
+                <ul>Auction name: {{ object.name }}</ul>
+                <ul>Price: {{ object.price }}</ul>
+                <ul>End date: {{ object.end_date }}</ul>
+            {% endif %}
+
+            {% if object.owner == user and object.sold == False and object.category == 1 %}
+                <ul>
+                    AUCTION OWNER CAN'T BID
+                </ul>
+            {% elif object.sold == False and object.category == 1 %}
+                <ul>
+                <button onclick="location.href='{% url 'add_bid' object.id %}';">Add bid</button>
+            {% endif %}
+
+        </ul>
+        {% endif %}
+    </ul>
+    {% endfor %}
+{% endblock %}

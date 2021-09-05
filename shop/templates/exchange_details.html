@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ul>PROPOSITION FROM: {{ object.proposal_user }}  FOR USER: {{ object.exchange.owner }}</ul>
+   <ul> PROPOSITION: {{ object.proposal }}</ul>
+    <ul>FOR EXCHANGE: {{ object.exchange }}</ul>
+    <ul>ADDITIONAL PAYMENT: {{ object.counter_offer }}</ul>
+    {% if object.exchange.owner == user %}
+    <button onclick="location.href='{% url 'accept_exchange' object.proposal.id object.exchange.id %}';">ACCEPT</button>
+    <button onclick="location.href='{% url 'decline_exchange' object.id %}';">DECLINE</button>
+    <button onclick="location.href='{% url 'counter_exchange' object.id %}';">COUNTER OFFER</button>
+    {% endif %}
+{% endblock %}

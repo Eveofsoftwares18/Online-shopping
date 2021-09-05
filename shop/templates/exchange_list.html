@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for object in object_list %}
+        {% if object.proposal.sold == False %}
+           <ul><a href="{% url 'exchange_details' object.id %}">{{ object }}</a></ul>
+        {% endif %}
+
+    {% endfor %}
+{% endblock %}

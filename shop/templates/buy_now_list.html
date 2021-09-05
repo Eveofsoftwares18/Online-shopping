@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for object in object_list %}
+        {% if object.category == 2 and object.sold == False %}
+           <button onclick="location.href='{% url 'buy_now_details' object.id %}';">{{ object }}</button>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

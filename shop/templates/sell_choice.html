@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ul><button onclick="location.href='{% url 'add_auction' %}';">Add auction</button></ul>
+    <ul><button onclick="location.href='{% url 'exchange_view' %}';">Exchange</button></ul>
+    <ul><button onclick="location.href='{% url 'buy_now' %}';">Buy now</button></ul>
+{% endblock %}

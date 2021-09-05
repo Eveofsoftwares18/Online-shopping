@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for auction in object_list %}
+        {% if auction.sold == False %}
+        <ul><a href={% url 'auction_details' auction.id %} >{{ auction }}</a> </ul>
+            <ul><button onclick="location.href='{% url 'auction_delete' auction.id %}';">Delete</button></ul>
+
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}

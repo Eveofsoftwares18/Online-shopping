@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <li>PROPOSITION FROM: {{ object.owner }}</li>
+   <li> PROPOSITION: {{ object.name }}</li>
+    <li>PRICE: {{ object.price }}</li>
+    <button onclick="location.href='{% url 'buy' object.id %}';">Buy</button>
+    {% if object.owner == user %}
+    <button onclick="location.href='{% url 'auction_delete' object.id %}';">Delete</button>
+    {% endif %}
+
+{% endblock %}
